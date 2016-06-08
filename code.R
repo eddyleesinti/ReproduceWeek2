@@ -1,4 +1,5 @@
 # File Location and URL
+
 data.dir <- "./data"
 file.loc <- paste(data.dir, "activity.csv",sep = "/")
 

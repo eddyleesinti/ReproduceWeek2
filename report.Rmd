@@ -1,6 +1,5 @@
 # Reproducible Week 2 - Assignment 
 
-
 # Load Library
 ```{r}
 library(ggplot2)

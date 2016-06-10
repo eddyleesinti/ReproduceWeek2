@@ -1,3 +1,5 @@
+library(ggplot2)
+
 # File Location and URL
 
 data.dir <- "./data"
@@ -24,11 +26,15 @@ data$date <- as.Date(data$date, "%Y-%m-%d")
 # 2.Histogram of the total number of steps taken each day
 # Summary of steps by date
 steps.by.date.sum <- with(data, aggregate(steps ~ date, FUN=sum))
-hist(x = steps.by.date$steps, breaks=10, ylab="Count", xlab="Steps", main = "Steps by Date")
+hist(x = steps.by.date.sum$steps, breaks=10, ylab="Count", xlab="Steps", main = "Steps by Date")
 
 # 3.Mean and median number of steps taken each day
-median.steps.by.date <- median(steps.by.date$steps, na.rm=T)
-mean.steps.by.date <- mean(steps.by.date$steps, na.rm=T)
+median.steps.by.date <- median(steps.by.date.sum$steps, na.rm=T)
+mean.steps.by.date <- mean(steps.by.date.sum$steps, na.rm=T)
+
+print(paste("Median number of steps taken each day is: ", median.steps.by.date))
+print(paste("Mean number of steps taken each day is: ", mean.steps.by.date))
+
 
 # 4.Time series plot of the average number of steps taken
 steps.by.interval.mean <- with(data, aggregate(steps~interval, FUN=mean))
@@ -48,7 +54,7 @@ data[is.na(data$steps),c("steps")] <- 0
 
 # 7.Histogram of the total number of steps taken each day after missing values are imputed
 steps.by.date.sum <- with(data, aggregate(steps ~ date, FUN=sum))
-hist(x = steps.by.date$steps, breaks=10, ylab="Count", xlab="Steps", main = "Steps by Date")
+hist(x = steps.by.date.sum$steps, breaks=10, ylab="Count", xlab="Steps", main = "Steps by Date")
 
 
 # 8.Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends

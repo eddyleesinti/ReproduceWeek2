@@ -160,7 +160,11 @@ hist(x = steps.by.date.sum$steps, breaks=10, ylab=&quot;Count&quot;, xlab=&quot;
 <div id="mean-and-median-number-of-steps-taken-each-day" class="section level1">
 <h1>3.Mean and median number of steps taken each day</h1>
 <pre class="r"><code>median.steps.by.date &lt;- median(data$steps, na.rm=T)
-mean.steps.by.date &lt;- mean(data$steps, na.rm=T)</code></pre>
+mean.steps.by.date &lt;- mean(data$steps, na.rm=T)
+print(paste(&quot;Median number of steps taken each day is: &quot;, median.steps.by.date))</code></pre>
+<pre><code>## [1] &quot;Median number of steps taken each day is:  0&quot;</code></pre>
+<pre class="r"><code>print(paste(&quot;Mean number of steps taken each day is: &quot;, mean.steps.by.date))</code></pre>
+<pre><code>## [1] &quot;Mean number of steps taken each day is:  37.3825995807128&quot;</code></pre>
 </div>
 <div id="time-series-plot-of-the-average-number-of-steps-taken" class="section level1">
 <h1>4.Time series plot of the average number of steps taken</h1>
@@ -170,17 +174,17 @@ ggplot(steps.by.interval.mean,aes(interval, steps)) + geom_line()</code></pre>
 </div>
 <div id="the-5-minute-interval-that-on-average-contains-the-maximum-number-of-steps" class="section level1">
 <h1>5.The 5-minute interval that, on average, contains the maximum number of steps</h1>
-<pre class="r"><code>steps.by.interval.mean[which.max(steps.by.interval.mean$steps),]</code></pre>
+<pre class="r"><code>print(steps.by.interval.mean[which.max(steps.by.interval.mean$steps),])</code></pre>
 <pre><code>##     interval    steps
 ## 104      835 206.1698</code></pre>
-<pre class="r"><code># 6.Code to describe and show a strategy for imputing missing data</code></pre>
-<div id="profile-the-data-set-to-understand-quantum-of-missing-data" class="section level2">
-<h2>Profile the data set to understand quantum of missing data</h2>
-<pre class="r"><code>table(is.na(data$steps))</code></pre>
+</div>
+<div id="code-to-describe-and-show-a-strategy-for-imputing-missing-data" class="section level1">
+<h1>6.Code to describe and show a strategy for imputing missing data</h1>
+<pre class="r"><code>## Profile the data set to understand quantum of missing data
+table(is.na(data$steps))</code></pre>
 <pre><code>## 
 ## FALSE  TRUE 
 ## 15264  2304</code></pre>
-</div>
 <div id="determine-logics-to-impute-missing-value.-in-this-example-i-just-impute-with-0-for-the-variable" class="section level2">
 <h2>Determine logics to impute missing value. In this example, I just impute with 0 for the variable</h2>
 <pre class="r"><code>data[is.na(data$steps),c(&quot;steps&quot;)] &lt;- 0</code></pre>

@@ -48,6 +48,9 @@ hist(x = steps.by.date.sum$steps, breaks=10, ylab="Count", xlab="Steps", main = 
 ```{r}
 median.steps.by.date <- median(data$steps, na.rm=T)
 mean.steps.by.date <- mean(data$steps, na.rm=T)
+print(paste("Median number of steps taken each day is: ", median.steps.by.date))
+print(paste("Mean number of steps taken each day is: ", mean.steps.by.date))
+
 ```
 
 
@@ -59,15 +62,14 @@ ggplot(steps.by.interval.mean,aes(interval, steps)) + geom_line()
 
 # 5.The 5-minute interval that, on average, contains the maximum number of steps
 ```{r}
-steps.by.interval.mean[which.max(steps.by.interval.mean$steps),]
+print(steps.by.interval.mean[which.max(steps.by.interval.mean$steps),])
 ```
 
-```{r}
+
 # 6.Code to describe and show a strategy for imputing missing data
-```
 
-## Profile the data set to understand quantum of missing data
 ```{r}
+## Profile the data set to understand quantum of missing data
 table(is.na(data$steps))
 ```
 
